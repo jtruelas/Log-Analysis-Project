@@ -22,12 +22,13 @@ To log in to the vm, run the following:
 ```
 user new_directory $ vagrant up && vagrant ssh
 ```
-Download the [database](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip) and unzip the file. Place the file `newsdata.sql` in the `vagrant` directory shared with the vm.
+Download the [database](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip) and unzip the file. Place the file `newsdata.sql` in the directory shared with the vm.
 
 Once you are in:
 ```
 vagrant@vagrant:~$ cd /vagrant
 vagrant@vagrant:/vagrant$ psql -d news -f newsdata.sql
+vagrant@vagrant:/vagrant$ psql news
 ```
 Then create the [views](https://github.com/jtruelas/Log-Analysis-Project#created-views) listed below before going on to run the program.
 
