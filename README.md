@@ -29,7 +29,7 @@ Once you are in:
 vagrant@vagrant:~$ cd /vagrant
 vagrant@vagrant:/vagrant$ psql -d news -f newsdata.sql
 ```
-Then create the views listed below before going on to run the program.
+Then create the [views](https://github.com/jtruelas/Log-Analysis-Project#created-views) listed below before going on to run the program.
 
 When you are finished, run the program:
 ```
