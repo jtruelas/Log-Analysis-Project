@@ -1,6 +1,6 @@
-#Log Analysis Project
+# Log Analysis Project
 
-##Description
+## Description
 This program accesses a database from a news station.
 
 With the data located in the database the program answers the following questions:
@@ -11,7 +11,7 @@ With the data located in the database the program answers the following question
 
 The output will appear on the terminal window with the answers in order the questions are listed.
 
-##Quick Startup
+## Quick Startup
 To run this program on your machine, _FORK_ [this](https://github.com/jtruelas/Log-Analysis-Project.git) virtual machine and clone it to a local directory.
 ```
 user ~ $ mkdir new_directory
@@ -36,7 +36,7 @@ When you are finished, run the program:
 news=> \q
 vagrant@vagrant:/vagrant$ python news.py
 ```
-##Created Views:
+## Created Views:
 _tophits:_
 ```
 create view tophits as
@@ -62,7 +62,7 @@ and titles.title = articles.title
 and titles.slug = tophits.path
 order by hits desc;
 ```
-_e___status:_
+*e_status:*
 ```
 create view e_status as 
 select date(time), count(status) as error from log
@@ -70,14 +70,14 @@ where status != '200 OK'
 group by date
 order by date;
 ```
-_t___status:_
+*t_status:*
 ```
 news=> create view t_status as
 select date(time), count(status) as status from log
 group by date
 order by date;
 ```
-_avg___error:_
+*avg_error:*
 ```
 create view avg_error as
 select e_status.date, round(100.0 * e_status.error/t_status.status, 2) as percent from e_status, t_status
