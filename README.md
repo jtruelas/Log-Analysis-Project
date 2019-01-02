@@ -27,7 +27,7 @@ Download the [database](https://d17h27t6h515a5.cloudfront.net/topher/2016/August
 Once you are in:
 ```
 vagrant@vagrant:~$ cd /vagrant
-vagrant@vagrant:/vagrant$ psql news
+vagrant@vagrant:/vagrant$ psql -d news -f newsdata.sql
 ```
 Then create the views listed below before going on to run the program.
 
