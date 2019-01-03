@@ -7,13 +7,15 @@
 
 import psycopg2
 
-DBNAME = "news"
+try:
+    db = psycopg2.connect(database="news")
+except pscopg2.Error as e:
+    print "Unable to connect to the database"
 
 
 def topArticles():
 
     """Returns the top three articles of all time"""
-    db = psycopg2.connect(database=DBNAME)
     c = db.cursor()
     c.execute("select titles.title, tophits.hits\
         from tophits, titles\
@@ -27,7 +29,6 @@ def topArticles():
 def topAuthors():
 
     """Returns the top authors of all time"""
-    db = psycopg2.connect(database=DBNAME)
     c = db.cursor()
     c.execute("select name, sum(hits) as hits\
         from authorhits group by name\
@@ -40,7 +41,6 @@ def topAuthors():
 def errDays():
 
     """Returns the days where more than 1% of requests resulted in an error"""
-    db = psycopg2.connect(database=DBNAME)
     c = db.cursor()
     c.execute("select date, percent from avg_error\
         where percent > 1.00;")
